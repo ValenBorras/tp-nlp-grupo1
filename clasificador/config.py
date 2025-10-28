@@ -1,6 +1,3 @@
-from __future__ import annotations
-import os
-
 INPUT_FILE = "./data/noticias_test.json"
 OUTPUT_FILE = "./data/noticias_etiquetadas_test.json"
 
