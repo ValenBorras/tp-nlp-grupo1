@@ -1,4 +1,4 @@
-# Clasificador de noticias (TP PLN - Grupo 1)
+# Clasificador y resumidor de noticias (TP PLN - Grupo 1)
 
 Repositorio para la tarea de la asignatura: scrapear páginas de noticias, clasificarlas por ministerio usando un LLM (OpenRouter / Minimax M2) y producir resúmenes por ministerio.
 
