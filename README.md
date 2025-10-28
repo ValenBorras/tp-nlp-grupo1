@@ -37,7 +37,20 @@ Ministerios:
 ---
 
 ### Scraper
+newsScraper.py es un recolector automatizado de noticias argentinas que extrae artículos periodísticos de medios digitales para alimentar el pipeline de clasificación.
 
+Fuentes de información:
+- Sitios principales: Clarín, La Nación, TN, CNN Español Argentina, El País
+- Feeds RSS (22 feeds): La Política Online, Ámbito, Clarín RSS (política, sociedad, policiales, mundo, economía, tecnología)
+
+Funcionamiento:
+- Obtiene links desde las homepages de los sitios principales y filtra solo noticias relevantes (política, economía, sociedad, educación, seguridad)
+- Descarta categorías no relevantes (deportes, espectáculos, moda, salud/bienestar, cultura)
+- Agrega links adicionales desde 22 feeds RSS sin filtrar
+- Extrae el contenido completo usando el bloque JSON-LD embebido en cada artículo (título, descripción, autor, fecha, cuerpo)
+- Elimina duplicados normalizando URLs y guarda todo en noticias.json
+
+Nota importante: En producción, el scraper estaría configurado para obtener solo noticias de las últimas 24 horas. Para este proyecto académico, se configuró con limit=150 por cada fuente para recolectar la mayor cantidad posible de artículos y construir un dataset robusto de prueba para entrenar y testear tanto el clasificador como el summarizer.
 ---
 
 ### Clasificador
