@@ -90,7 +90,7 @@ Ejemplo (macOS zsh / bash)
 ```bash
 export OPENROUTER_API_KEY="sk-...tu_key..."
 export OPENROUTER_MODEL="minimax/minimax-m2:free"
-# opcional: export OPENROUTER_TIMEOUT="120"
+
 
 # ejecutar (desde la raíz del repo)
 python3 -m clasificador.pipeline_classificador
