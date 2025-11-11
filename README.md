@@ -26,6 +26,14 @@ Ministerios:
 │   └── utils/                     # Funciones de utilidad compartidas
 │       ├── __init__.py
 │       └── time_utils.py              # Helpers de tiempo (ej: format_duration_hms)
+├── summarizer/
+|        │
+|        ├── pipeline_summarizer.py   # Orquestador principal (run_pipeline)
+|        ├── openrouter_client.py     # Cliente HTTP para OpenRouter
+|        ├── tokenizer_utils.py       # Funciones auxiliares para tokenizar y dividir textos largos
+|        ├── config.py                # Parámetros y paths (INPUT_FILE, OUTPUT_FILE, LOTE, TEMPERATURE, TOP_P…)
+|        ├── schema.py                # Modelos Pydantic para validar la salida
+|        └── prompts.py               # Prompts del modelo (instrucciones de resumen)
 ├── .gitignore                    # Exclusiones para control de versiones
 ├── newsScraper.py                 # Script de scraping para generar noticias.json
 ├── package-lock.json              # Lockfile de NPM (si se usan herramientas Node en scraping)
@@ -107,3 +115,9 @@ Nota: En caso de no configurar las variables de entorno hacerlo en el archivo `c
 ### Depuración rápida de errores comunes
 - "Invalid input: expected number, received string": revisar TEMPERATURE / TOP_P en clasificador/config.py o en variables de entorno. Asegurarse de convertirlas a float antes de enviarlas al API.
 - Errores HTTP 4xx/5xx: revisar la API key y el formato del payload (ver openrouter_client.py).
+
+---
+### Summarizer
+- Genera resúmenes abstractive de artículos en español.
+- Lee un archivo JSON de entrada con textos (configurable), procesa los artículos en lotes y obtiene los resúmenes mediante una llamada al modelo LLM.
+- Valida y normaliza las respuestas usando Pydantic, y guarda un JSON de salida con los resúmenes generados.
