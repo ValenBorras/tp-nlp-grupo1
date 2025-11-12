@@ -121,3 +121,11 @@ Nota: En caso de no configurar las variables de entorno hacerlo en el archivo `c
 - Genera resúmenes abstractive de artículos en español.
 - Lee un archivo JSON de entrada con textos (configurable), procesa los artículos en lotes y obtiene los resúmenes mediante una llamada al modelo LLM.
 - Valida y normaliza las respuestas usando Pydantic, y guarda un JSON de salida con los resúmenes generados.
+
+Ejecución por ministerio (desde la raíz del repo):
+```bash
+python3 -m summarizer.pipeline_summarizer --ministerio Economía
+```
+- `--ministerio` acepta uno de `{Salud, Educación, Seguridad, Trabajo, Economía}` y filtra las noticias etiquetadas para ese ministerio.
+- Las rutas de entrada/salida se configuran en `summarizer/config.py`; por defecto se usa `data/noticias_etiquetadas.json` como entrada y se escribe `data/noticias_resumidas.json`.
+- La respuesta se guarda en formato Markdown dentro del campo `resumen`.

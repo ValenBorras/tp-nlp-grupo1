@@ -1,5 +1,7 @@
 from pydantic import BaseModel
 
+
 class SummOut(BaseModel):
-    idx: int
+    ministerio: str
+    total_articulos: int
     resumen: str
