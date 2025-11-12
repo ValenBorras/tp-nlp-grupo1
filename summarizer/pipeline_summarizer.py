@@ -13,23 +13,13 @@ from clasificador.openrouter_client import call_openrouter_api
 from utils.time_utils import format_duration_hms
 
 
-def _truncate(texto: str, max_chars: int) -> str:
-    """Corta una cadena al tamaño máximo indicado, agregando un elipsis si se recorta."""
-    texto = (texto or "").strip()
-    if len(texto) <= max_chars:
-        return texto
-    return texto[:max_chars - 1].rstrip() + "…"
-
-
 def _formatear_articulos(articulos: Iterable[Dict]) -> str:
     """Arma un bloque de texto numerado con título, fuente, fecha y contenido de cada artículo."""
     segmentos: List[str] = []
     for idx, articulo in enumerate(articulos, start=1):
-        titulo = _truncate(articulo.get("Titulo", ""), 220)
-        descripcion = _truncate(articulo.get("Descripcion", ""), 380)
-        cuerpo = _truncate(
-            articulo.get("Cuerpo") or articulo.get("Descripcion") or "", 900
-        )
+        titulo = (articulo.get("Titulo") or "").strip()
+        descripcion = (articulo.get("Descripcion") or "").strip()
+        cuerpo = (articulo.get("Cuerpo") or articulo.get("Descripcion") or "").strip()
         fuente = articulo.get("Fuente", "")
         fecha = articulo.get("Fecha", "")
         segmentos.append(
@@ -132,7 +122,9 @@ def run_pipeline(ministerio: str) -> None:
     ).model_dump()
 
     print(f"Escribiendo {output_file}…")
-    output_file.write_text(json.dumps(salida, ensure_ascii=False, indent=2), encoding="utf-8")
+    output_file.write_text(
+        json.dumps(salida, ensure_ascii=False, indent=2), encoding="utf-8"
+    )
 
     print("════════════════════════════════════════")
     print(

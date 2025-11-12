@@ -79,7 +79,7 @@ Ejemplo de ejecución finalizada con exito
 ---
 ### Requisitos
 - Python 3.9+
-- requests, pydantic (instalar desde requirements.txt si existe)
+- requests, pydantic, bert-score, torch (instalar desde requirements.txt)
 Comandos (macOS / Linux):
 - Crear y activar entorno:
   - python3 -m venv .venv
@@ -128,4 +128,20 @@ python3 -m summarizer.pipeline_summarizer --ministerio Economía
 ```
 - `--ministerio` acepta uno de `{Salud, Educación, Seguridad, Trabajo, Economía}` y filtra las noticias etiquetadas para ese ministerio.
 - Las rutas de entrada/salida se configuran en `summarizer/config.py`; por defecto se usa `data/noticias_etiquetadas.json` como entrada y se escribe `data/noticias_resumidas.json`.
-- La respuesta se guarda en formato Markdown dentro del campo `resumen`.
+- La respuesta se guarda en formato Markdown dentro del campo `resumen`, con secciones **Panorama general**, **Evidencias clave** e **Impacto y próximos pasos**.
+
+### Evaluación con BERTScore
+- Instalar las dependencias adicionales (si no se hizo antes): `pip install bert-score torch`.
+- Ejecutar el pipeline normalmente y luego lanzar la evaluación como un paso separado.
+
+Generar resúmenes:
+```bash
+python3 -m summarizer.pipeline_summarizer --ministerio Economía
+```
+
+Calcular métricas (usando las rutas por defecto definidas en `summarizer/config.py`):
+```bash
+python3 -m summarizer.eval_metrics --ministerio Economía
+```
+
+El evaluador toma el resumen generado para el ministerio indicado y lo compara con el texto original de las noticias de ese ministerio (la referencia se arma a partir de `summarizer.config.INPUT_FILE`). El resultado se escribe en `summarizer.config.EVAL_METRICS_FILE`. El resto de los parámetros (rutas, modelo, idioma, normalización) se controla desde `summarizer/config.py`; solo necesitas indicar el ministerio a analizar.
