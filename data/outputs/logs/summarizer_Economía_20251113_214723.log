@@ -1,0 +1,16 @@
+════════════════════════════════════════
+ Summarizer por ministerio 📰✨ 
+════════════════════════════════════════
+Archivo entrada:  data\noticias_etiquetadas.json
+Archivo salida:   data\resumenes\Economía.json
+Ministerio:       Economía
+────────────────────────────────────────
+Leídos 638 artículos en 0s
+Procesando 310 artículos asociados al ministerio Economía…
+   ! Error generando resumen del ministerio 'Economía': Falta OPENROUTER_API_KEY en variables de entorno.
+   ✓ Resumen generado en 0s
+────────────────────────────────────────
+Escribiendo data\resumenes\Economía.json…
+════════════════════════════════════════
+ ¡Proceso completo en 0s! ✅ 
+════════════════════════════════════════

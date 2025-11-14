@@ -4,6 +4,8 @@ from typing import Any, List, Dict
 import json, time
 from json import dumps, loads
 from pydantic import ValidationError
+import sys
+sys.stdout.reconfigure(encoding="utf-8")
 
 from .config import INPUT_FILE, OUTPUT_FILE, LOTE
 from .schema import ClasifOut, MINISTERIOS_VALIDOS

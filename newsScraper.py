@@ -3,6 +3,8 @@ import requests, re
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin, urlparse
 from datetime import datetime
+import sys
+sys.stdout.reconfigure(encoding="utf-8")
 
 HEADERS = {"User-Agent": "Mozilla/5.0"}
 

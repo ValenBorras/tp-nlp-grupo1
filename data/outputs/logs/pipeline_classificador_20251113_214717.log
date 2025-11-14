@@ -1,0 +1,33 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\manuel.gl\Documents\tp-nlp-grupo1\clasificador\pipeline_classificador.py", line 218, in <module>
+    run_pipeline()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\manuel.gl\Documents\tp-nlp-grupo1\clasificador\pipeline_classificador.py", line 147, in run_pipeline
+    respuestas_lote = clasificar_lote(items_lote, inicio_lote)
+  File "C:\Users\manuel.gl\Documents\tp-nlp-grupo1\clasificador\pipeline_classificador.py", line 81, in clasificar_lote
+    content = call_openrouter_api(messages)
+  File "C:\Users\manuel.gl\Documents\tp-nlp-grupo1\clasificador\openrouter_client.py", line 39, in call_openrouter_api
+    raise RuntimeError("Falta OPENROUTER_API_KEY en variables de entorno.")
+RuntimeError: Falta OPENROUTER_API_KEY en variables de entorno.
+════════════════════════════════════════
+ Clasificador de noticias con Minimax M2 (Open Routes) 🚀 
+════════════════════════════════════════
+Archivo entrada:  ./data/noticias.json
+Archivo salida:   ./data/noticias_etiquetadas.json
+Tamaño de lote:   20
+────────────────────────────────────────
+Leídos 638 articulos en 0s
+Procesando en 32 lote(s)…
+────────────────────────────────────────
+[Lote 1/32] Índices 0..19 (n=20)
+   • Enviando a modelo…
+   ! Error en lote (intento 1/3): Falta OPENROUTER_API_KEY en variables de entorno.
+   ↺ Reintentando en 1.0s…
+   • Enviando a modelo…
+   ! Error en lote (intento 2/3): Falta OPENROUTER_API_KEY en variables de entorno.
+   ↺ Reintentando en 2.0s…
+   • Enviando a modelo…
+   ! Error en lote (intento 3/3): Falta OPENROUTER_API_KEY en variables de entorno.
+   ✖ Abortando este lote por 3 fallos consecutivos.

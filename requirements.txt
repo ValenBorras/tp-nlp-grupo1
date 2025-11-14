@@ -2,3 +2,4 @@ pydantic>=2.6
 requests>=2.32
 bert-score>=0.3.13
 torch>=2.3.0
+beautifulsoup4

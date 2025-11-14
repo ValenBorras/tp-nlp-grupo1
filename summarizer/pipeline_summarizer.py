@@ -4,6 +4,8 @@ from datetime import datetime
 from pathlib import Path
 from typing import Dict, Iterable, List
 import time
+import sys
+sys.stdout.reconfigure(encoding="utf-8")
 
 from .config import INPUT_FILE, OUTPUT_FILE
 from .schema import SummOut
@@ -66,7 +68,10 @@ def resumir_ministerio(ministerio: str, articulos: List[Dict]) -> str:
 
 def run_pipeline(ministerio: str) -> None:
     input_file = Path(INPUT_FILE)
-    output_file = Path(OUTPUT_FILE)
+    output_dir  = Path(OUTPUT_FILE)
+    output_dir.mkdir(parents=True, exist_ok=True)
+    # archivo final → data/resumenes/<ministerio>.json
+    output_file = output_dir / f"{ministerio}.json"
 
     print("════════════════════════════════════════")
     print(" Summarizer por ministerio 📰✨ ")
